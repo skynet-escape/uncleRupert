@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {trigger, state, style, animate, transition, keyframes} from '@angular/animations';
 
 import { Puzzle } from './puzzle';
+import {MatStepper} from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -39,33 +40,75 @@ import { Puzzle } from './puzzle';
     ]),
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   title = 'uncleRupert';
+  // stepIndex = 0;
 
   puzzles = [
     new Puzzle(
       'Puzzle 1',
       'This is the clue for puzzle 1',
-      'Who am i',
+      'Who am I',
       'AAA',
       'Solution 1',
       'Reward 1'),
     new Puzzle(
       'Puzzle 2',
       'This is the clue for puzzle 2',
-      'What am i',
+      'What am I',
       'BBB',
       'Solution 2',
       'Reward 2'),
     new Puzzle(
       'Puzzle 1',
       'This is the clue for puzzle 1',
-      'What am i',
+      'What am I',
       'CCC',
       'Solution 3',
       'Reward 3'),
   ];
+
+  public finalPuzzle = new Puzzle(
+    'Final puzzle',
+    'I am:',
+    'What am I',
+    'ZZZ',
+    'Final Solution',
+    '');
+
+  iaAllSolved = false;
+
+  public allPuzzlesSolved(stepper: MatStepper) {
+    let result = true;
+    this.puzzles.forEach(puzzle => {
+      if (puzzle.solved === false) { result = false; }
+    });
+    if ((this.iaAllSolved === false) && (result === true)) {
+      this.iaAllSolved = true;
+      // this.puzzles.concat([this.finalPuzzle]);
+      // this.stepIndex = -1;
+      // stepper.selectedIndex = 99;
+      // stepper.selected.stepControl.disabled = true;
+    }
+    return result;
+  }
+
+ /* private replacer(key, value) {
+    if (key === 'inputFormControl') { return undefined; }
+    if (key === 'privateProperty2') { return undefined; }
+    return value;
+  }
+
+  public onChangeStepper() {
+    localStorage.removeItem('puzzles');
+    localStorage.setItem('puzzles', JSON.stringify(this.puzzles, this.replacer));
+    console.log('set puzzles');
+  }*/
+
+  ngOnInit() {
+    // this.puzzles = JSON.parse(localStorage.getItem('puzzles'));
+  }
 
 }
 
