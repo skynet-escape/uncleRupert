@@ -48,17 +48,23 @@ export class AppComponent {
       'Puzzle 1',
       'This is the clue for puzzle 1',
       'Who am i',
-      'AAA'),
+      'AAA',
+      'Solution 1',
+      'Reward 1'),
     new Puzzle(
       'Puzzle 2',
       'This is the clue for puzzle 2',
       'What am i',
-      'BBB'),
+      'BBB',
+      'Solution 2',
+      'Reward 2'),
     new Puzzle(
       'Puzzle 1',
       'This is the clue for puzzle 1',
       'What am i',
-      'CCC'),
+      'CCC',
+      'Solution 3',
+      'Reward 3'),
   ];
 
 }
