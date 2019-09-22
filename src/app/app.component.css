@@ -1,0 +1,8 @@
+div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.mat-step-icon-state-edit {
+  background-color: green !important;
+}

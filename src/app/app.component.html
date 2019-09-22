@@ -1,26 +1,37 @@
 
 
+<div class="centerit">
+  <h1 style="margin-bottom: 1px">Uncle Rupert's Maniacal Inheritance Puzzle</h1>
+  <div style="margin-top: 1px">mmmmmwwwwahahahahahahaha</div>
+  <br>
+</div>
 
 
 
 
 
-
-
-
-
-Hello World
-<br>
-<br>
-<br>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!--{{stepIndex}}-->
-<span *ngIf="allPuzzlesSolved() == true">
-  <div style="margin-bottom:20px;">Congratulations! But there is still one puzzle left to solve.</div>
-</span>
+<div class="centerit" *ngIf="allPuzzlesSolved() == false">
+  <h3>You must solve all puzzles to claim your real inheritance</h3>
+  <div>Enter your answers below and hit the check mark to submit</div>
+</div>
+<div class="centerit" *ngIf="(allPuzzlesSolved() == true) && !(finalPuzzle.solved)">
+  <h3 style="margin-bottom:20px;witdth: 100%">Congratulations! But there is still one puzzle left to solve.</h3>
+</div>
+<div class="centerit" *ngIf="finalPuzzle.solved">
+  <h3>Congratulations! You have solved the puzzle.</h3>
+  <div>Click <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">here</a> to claim your inheritance</div>
+  <br>
+</div>
 
-<mat-vertical-stepper  #stepper *ngIf="allPuzzlesSolved() == false" >
+
+
+
+<mat-vertical-stepper  #stepper
+      class="centerit"
+       *ngIf="allPuzzlesSolved() == false" >
 
   <ng-template matStepperIcon="edit">
     <mat-icon>check</mat-icon>
@@ -44,11 +55,29 @@ Hello World
       </mat-error>
       <button mat-button *ngIf="puzzle.inputFormControl.value"
               matSuffix mat-icon-button aria-label="Submit"
+              matTooltip="Check Answer"
               (click)="puzzle.checkValue()" >
           <mat-icon>check</mat-icon>
       </button>
+      <button mat-button  *ngIf="puzzle.hintShow < 2"
+              matPrefix mat-icon-button aria-label="Show hint"
+              matTooltip="Show a hint"
+              (click)="puzzle.showHint()" >
+        <mat-icon>help_outline</mat-icon>
+      </button>
 
     </mat-form-field>
+
+    <div *ngIf="puzzle.hintShow >= 1" style="margin-top: 7px;">
+      <span style="color: #FF6E40;">First Hint:</span> {{puzzle.hint1}}
+    </div>
+    <div *ngIf="puzzle.hintShow >= 2" >
+      <span style="color: #FF6E40;">Last Hint:</span> {{puzzle.hint2}}
+    </div>
+
+
+
+
 <!--    <div>{{puzzle.guess}}</div>-->
     <!--    <div>{{puzzle.inputFormControl.value}}</div>-->
 <!--        <div>{{puzzle.shake}}</div>-->
@@ -63,7 +92,7 @@ Hello World
 
 <!--{{allPuzzlesSolved()}}-->
 
-<span *ngIf="allPuzzlesSolved() == true">
+<div class="centerit" *ngIf="allPuzzlesSolved() == true">
   <div>{{finalPuzzle.clue}}</div>
   <ul *ngFor="let puzzle of puzzles">
     <li>{{puzzle.reward}}</li>
@@ -86,5 +115,7 @@ Hello World
     </button>
 
   </mat-form-field>
-</span>
+</div>
+
+<br>
 

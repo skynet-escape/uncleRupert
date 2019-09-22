@@ -52,21 +52,27 @@ export class AppComponent implements OnInit {
       'Who am I',
       'AAA',
       'Solution 1',
-      'Reward 1'),
+      'Reward 1',
+      'This is your first hint',
+      'This is your second hint'),
     new Puzzle(
       'Puzzle 2',
       'This is the clue for puzzle 2',
       'What am I',
       'BBB',
       'Solution 2',
-      'Reward 2'),
+      'Reward 2',
+      'This is your first hint',
+      'This is your second hint'),
     new Puzzle(
       'Puzzle 1',
       'This is the clue for puzzle 1',
       'What am I',
       'CCC',
       'Solution 3',
-      'Reward 3'),
+      'Reward 3',
+      'This is your first hint',
+      'This is your second hint'),
   ];
 
   public finalPuzzle = new Puzzle(
@@ -75,11 +81,13 @@ export class AppComponent implements OnInit {
     'What am I',
     'ZZZ',
     'Final Solution',
+    '',
+    '',
     '');
 
   iaAllSolved = false;
 
-  public allPuzzlesSolved(stepper: MatStepper) {
+  public allPuzzlesSolved() {
     let result = true;
     this.puzzles.forEach(puzzle => {
       if (puzzle.solved === false) { result = false; }
