@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
       'Puzzle 1',
       'This is the clue for puzzle 1',
       'Who am I',
-      'AAA',
+      [['AAA', '1'], ['BBB', '2']],
       'Solution 1',
       'Reward 1',
       'This is your first hint',
@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
       'Puzzle 2',
       'This is the clue for puzzle 2',
       'What am I',
-      'BBB',
+      [['BBB']],
       'Solution 2',
       'Reward 2',
       'This is your first hint',
@@ -68,7 +68,7 @@ export class AppComponent implements OnInit {
       'Puzzle 1',
       'This is the clue for puzzle 1',
       'What am I',
-      'CCC',
+      [['CCC'], ['DDD', '4']],
       'Solution 3',
       'Reward 3',
       'This is your first hint',
@@ -79,7 +79,7 @@ export class AppComponent implements OnInit {
     'Final puzzle',
     'I am:',
     'What am I',
-    'ZZZ',
+    [['ZZZ']],
     'Final Solution',
     '',
     '',
@@ -120,4 +120,5 @@ export class AppComponent implements OnInit {
 
 }
 
-
+// ng build --prod --baseHref=/unclerupert/ --deployUrl=https://unknown.site/
+// ng build --deployUrl=https://unknown.site/unclerupert/

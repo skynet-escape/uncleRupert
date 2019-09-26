@@ -36,7 +36,20 @@ export class Puzzle {
     // console.log(this.inputFormControl.value);
 
     this.input = this.inputFormControl.value.toString().toLocaleUpperCase();
-    if (this.input.includes(this.solution.toLocaleUpperCase())) {
+
+    let isMatch = false;
+    this.solution.forEach(solAndArr => {
+      let thisIsMatch = true;
+      solAndArr.forEach(solAnd => {
+        if (this.input.includes(solAnd.toLocaleUpperCase()) === false) {
+          thisIsMatch = false;
+        }
+      });
+      if (thisIsMatch) { isMatch = true; }
+    });
+
+
+    if (isMatch) {
       // console.log('success');
       this.solved = true;
       this.complete = true;
@@ -54,9 +67,7 @@ export class Puzzle {
     }
 
 
-    //this.inputFormControl.setValue('');
-    //this.complete = true;
-    // this.editable = false;
+
   }
   public showHint() {
     this.hintShow++;
@@ -71,7 +82,7 @@ export class Puzzle {
     public title: string,
     public clue: string,
     public placeholder: string,
-    public solution: string,
+    public solution: string[][],
     public fullSolution: string,
     public reward: string,
     public hint1: string,
